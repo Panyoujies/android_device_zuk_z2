@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DEVICE=oneplus3
-VENDOR=oneplus
+DEVICE=z2
+VENDOR=zuk
 
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk

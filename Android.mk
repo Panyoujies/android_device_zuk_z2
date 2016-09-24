@@ -25,43 +25,18 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),z2pro)
+ifeq ($(TARGET_DEVICE),z2)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
-include device/zuk/z2pro/kernel/AndroidKernel.mk
-
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := wifi_symlinks
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := FAKE
-LOCAL_MODULE_SUFFIX := -timestamp
-
-include $(BUILD_SYSTEM)/base_rules.mk
-
-$(shell mkdir -p $(TARGET_OUT)/lib/modules; \
-        ln -sf /system/lib/modules/qca_cld/qca_cld_wlan.ko \
-        $(TARGET_OUT)/lib/modules/wlan.ko)
-
-$(LOCAL_BUILT_MODULE): ACTUAL_INI_FILE := /system/etc/wifi/WCNSS_qcom_cfg.ini
-$(LOCAL_BUILT_MODULE): WCNSS_INI_SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-
-$(LOCAL_BUILT_MODULE): ACTUAL_MAC_FILE := /persist/wlan_mac.bin
-$(LOCAL_BUILT_MODULE): WCNSS_MAC_SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/wlan_mac.bin
-
-
-$(LOCAL_BUILT_MODULE): $(LOCAL_PATH)/Android.mk
-$(LOCAL_BUILT_MODULE):
-	$(hide) echo "Making symlinks for wifi"
-	$(hide) mkdir -p $(dir $@)
-	$(hide) mkdir -p $(dir $(WCNSS_INI_SYMLINK))
-	$(hide) rm -rf $@
-	$(hide) rm -rf $(WCNSS_INI_SYMLINK)
-	$(hide) ln -sf $(ACTUAL_INI_FILE) $(WCNSS_INI_SYMLINK)
-	$(hide) rm -rf $(WCNSS_MAC_SYMLINK)
-	$(hide) ln -sf $(ACTUAL_MAC_FILE) $(WCNSS_MAC_SYMLINK)
-	$(hide) touch $@
+# END WiFi symlinks
+$(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/qca_cld; \
+    ln -sf /system/etc/wifi/WCNSS_qcom_cfg.ini \
+	    $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini; \
+    ln -sf /persist/wlan_mac.bin \
+	    $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/wlan_mac.bin)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
@@ -76,6 +51,6 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
-include device/zuk/z2pro/tftp.mk
+include device/zuk/z2/tftp.mk
 
 endif

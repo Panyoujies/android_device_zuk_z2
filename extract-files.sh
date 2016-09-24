@@ -2,8 +2,8 @@
 
 set -e
 
-export DEVICE=oneplus3
-export VENDOR=oneplus
+export DEVICE=z2
+export VENDOR=zuk
 
 function extract() {
     for FILE in `egrep -v '(^#|^$)' $1`; do
