@@ -1,4 +1,4 @@
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2016 The panyoujie Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
 #
 
 $(call inherit-product-if-exists, vendor/zuk/z2/z2-vendor.mk)
-#$(call inherit-product-if-exists, device/zuk/z2/vendor/copyfiles.mk)
+$(call inherit-product-if-exists, device/zuk/z2/vendor/copyfiles.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
