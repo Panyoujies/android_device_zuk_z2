@@ -1,3 +1,3 @@
-# android_device_zuk_z2
+Copyright 2016 - The panyoujie Project
 
-杜绝打包党
+Device configuration for ZUK Z2.
