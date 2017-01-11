@@ -25,7 +25,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),z2_plus)
+ifeq ($(TARGET_DEVICE),z2)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
@@ -70,6 +70,6 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
-include device/zuk/z2_plus/tftp.mk
+include device/zuk/z2/tftp.mk
 
 endif

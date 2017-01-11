@@ -20,7 +20,7 @@
 # definition file).
 #
 
-$(call inherit-product-if-exists, vendor/zuk/z2_plus/z2_plus-vendor.mk)
+$(call inherit-product-if-exists, vendor/zuk/z2/z2-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -122,9 +122,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml
 
-# Camera
+# Alipay
 PRODUCT_PACKAGES += \
-    Snap
+    org.ifaa.android.manager
+
+PRODUCT_BOOT_JARS += \
+    org.ifaa.android.manager
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
@@ -143,7 +146,7 @@ PRODUCT_PACKAGES += \
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    ZukDoze
+    zukDoze
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
@@ -153,10 +156,6 @@ PRODUCT_PACKAGES += \
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
-
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -214,6 +213,7 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
+    libOmxVdecHevc \
     libstagefrighthw
 
 # Power
@@ -252,11 +252,13 @@ PRODUCT_PACKAGES += \
     IPACM_cfg.xml \
     libqsap_sdk \
     libQWiFiSoftApCfg \
+    libwcnss_qmi \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    wcnss_service
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \

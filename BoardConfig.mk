@@ -23,7 +23,7 @@
 
 TARGET_OTA_ASSERT_DEVICE := z2,Z2,z2plus,z2_plus
 
-PLATFORM_PATH := device/zuk/z2_plus
+PLATFORM_PATH := device/zuk/z2
 
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 
@@ -74,8 +74,6 @@ TARGET_KERNEL_SOURCE := kernel/zuk/msm8996
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
-BLOCK_BASED_OTA := true
-
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 
@@ -116,11 +114,8 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # CM Hardware
-BOARD_HARDWARE_CLASS += $(PLATFORM_PATH)/cmhw
+BOARD_HARDWARE_CLASS += $(PLATFORM_PATH)/mkhw
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touch/tp_dev/gesture_on"
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += \
-    hardware/cyanogen/cmhw
 
 # CNE and DPM
 TARGET_LDPRELOAD := libNimsWrap.so
@@ -214,13 +209,12 @@ BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-HOSTAPD_VERSION := VER_0_8_X
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME := "wlan"
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
--include vendor/zuk/z2_plus/BoardConfigVendor.mk
+-include vendor/zuk/z2/BoardConfigVendor.mk
