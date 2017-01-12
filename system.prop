@@ -282,5 +282,8 @@ persist.camera.llc=1
 persist.camera.llnoise=1
 persist.camera.stats.test=0
 
+# Storage
+ro.sys.sdcardfs=true
+
 ro.mk.maintainer=Flour_Mo
 
