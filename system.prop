@@ -65,7 +65,7 @@ ro.sf.lcd_density=480
 sdm.perf_hint_window=50
 persist.hwc.enable_vds=1
 sdm.debug.disable_rotator_split=1
-persist.panel.mountflip=3
+ro.panel.mountflip=3
 
 # Perf
 ro.am.reschedule_service=true
